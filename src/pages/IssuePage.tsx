@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 
-// import { GET_ISSUE } from '../graphql/issues.graphql'
-// import Issue from '../components/Issue'
-// import Comment from '../components/Comment'
-
 import { ISSUE_QUERY } from '../graphql/queries'
 import { GetIssueData, GetIssueVariables, Issue } from '../store/types'
 

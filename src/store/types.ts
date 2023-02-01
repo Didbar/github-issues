@@ -25,6 +25,7 @@ export interface Edge {
   cursor: string
   node: Issue
 }
+
 export interface CommentEdges {
   node: Comment
 }
@@ -40,16 +41,26 @@ export interface Repository {
     pageInfo: PageInfo
   }
 }
+
 export interface RepositoryItem {
   issue: Issue
+}
+
+export interface RepositoryStateCounts {
+  openedCount: {
+    totalCount: number
+  }
+  closedCount: {
+    totalCount: number
+  }
 }
 
 export interface RepositoryComments {
   issue: {
     comments: {
+      id: string
       edges: CommentEdges[]
     }
-    id: string
   }
 }
 
@@ -65,6 +76,10 @@ export interface GetCommentsData {
   repository: RepositoryComments
 }
 
+export interface GetStateCountsData {
+  repository: RepositoryStateCounts
+}
+
 export interface GetIssueVariables {
   cursor?: string
   number: number
@@ -76,6 +91,7 @@ export interface GetIssuesVariables {
   pageSize: number
   state: string[]
 }
+
 export interface GetCommentVariables {
   number: number
 }

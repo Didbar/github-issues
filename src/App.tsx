@@ -1,16 +1,9 @@
 import React from 'react'
 import Router from './routes'
-import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client'
+import { ApolloClient, ApolloProvider } from '@apollo/client'
+import { apolloClient } from './constants'
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: 'https://api.github.com/graphql',
-    headers: {
-      authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
-    }
-  })
-})
+const client = new ApolloClient(apolloClient)
 
 const App: React.FC = () => {
   return (
