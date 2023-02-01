@@ -20,7 +20,6 @@ type Params = {
 
 export const IssuePage: React.FC = () => {
   const [issue, setIssue] = useState<DetailedIssue>()
-
   let { issueNumber } = useParams<Params>()
 
   const navigate = useNavigate()
