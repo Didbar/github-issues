@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client'
 import { ISSUE_QUERY } from '../graphql/queries'
 import { GetIssueData, GetIssueVariables, Issue } from '../store/types'
 
-import Loading from '../components/common/Loading'
+import Loading from '../components/common/Loading/Loading'
 import ErrorMessage from '../components/common/Error'
 import IssueHeader from '../components/IssueHeader'
 import Button from '@mui/material/Button'

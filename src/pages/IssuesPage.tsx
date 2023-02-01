@@ -5,7 +5,7 @@ import { GET_ISSUES_DETAILED, ISSUES_COUNT_QUERY } from '../graphql/queries'
 import { GetIssuesData, GetIssuesVariables, Edge, GetStateCountsData } from '../store/types'
 
 import SearchBar from '../components/common/SearchBar'
-import Loading from '../components/common/Loading'
+import Loading from '../components/common/Loading/Loading'
 import ErrorMessage from '../components/common/Error'
 import IssuesList from '../components/IssuesList'
 

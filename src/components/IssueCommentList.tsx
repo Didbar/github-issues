@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import { COMMENTS_QUERY } from '../../src/graphql/queries'
 import { GetCommentsData, GetCommentVariables, CommentEdges } from '../store/types'
 
-import Loading from './common/Loading'
+import Loading from './common/Loading/Loading'
 import ErrorMessage from './common/Error'
 import IssueComment from './IssueComment'
 
