@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown'
 import { Grid, Typography, Avatar } from '@mui/material'
 import TimeAgo from './common/TimeAgo'
 
+import './issueComment.css'
+
 type Props = {
   body: string
   author: {

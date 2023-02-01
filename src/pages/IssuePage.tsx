@@ -12,6 +12,7 @@ import Loading from '../components/common/Loading'
 import ErrorMessage from '../components/common/Error'
 import IssueHeader from '../components/IssueHeader'
 import IssueCommentList from '../components/IssueCommentList'
+import Button from '@mui/material/Button'
 
 type Params = {
   issueNumber: string
@@ -35,17 +36,15 @@ export const IssuePage: React.FC = () => {
   if (loading) return <Loading />
   if (error) return <ErrorMessage error={error.message} />
 
-  const goBack = () => {
-    navigate(-1)
-  }
-
-  // const { author = {}, comments = {} } = issue
+  const goBack = () => navigate(-1)
 
   return (
     <>
       {issue ? (
         <>
-          <button onClick={goBack}>Back</button>
+          <Button onClick={goBack} color='info' size='large'>
+            Back
+          </Button>
           <IssueHeader issue={issue} />
           <IssueCommentList issueNumber={issue.number} />
         </>
