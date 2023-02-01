@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { lazy, useEffect, useState, memo, Suspense } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 
@@ -8,8 +8,12 @@ import { GetIssueData, GetIssueVariables, Issue } from '../store/types'
 import Loading from '../components/common/Loading'
 import ErrorMessage from '../components/common/Error'
 import IssueHeader from '../components/IssueHeader'
-import IssueCommentList from '../components/IssueCommentList'
 import Button from '@mui/material/Button'
+const IssueCommentList = lazy(() => import('../components/IssueCommentList'))
+
+const IssueHeaderMemo = memo(({ issue }: { issue: Issue }) => {
+  return <IssueHeader issue={issue} />
+})
 
 type Params = {
   issueNumber: string
@@ -41,8 +45,10 @@ export const IssuePage: React.FC = () => {
           <Button onClick={goBack} color='info' size='large'>
             Back
           </Button>
-          <IssueHeader issue={issue} />
-          <IssueCommentList issueNumber={issue.number} />
+          <IssueHeaderMemo issue={issue} />
+          <Suspense fallback={<Loading />}>
+            <IssueCommentList issueNumber={issue.number} />
+          </Suspense>
         </>
       ) : (
         <p>Issue not found</p>

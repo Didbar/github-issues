@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
-
 import { useQuery } from '@apollo/client'
+
 import { GET_ISSUES_DETAILED, ISSUES_COUNT_QUERY } from '../graphql/queries'
-import { GetIssuesData, GetIssuesVariables } from '../store/types'
+import { GetIssuesData, GetIssuesVariables, Edge, GetStateCountsData } from '../store/types'
 
 import SearchBar from '../components/common/SearchBar'
 import Loading from '../components/common/Loading'
 import ErrorMessage from '../components/common/Error'
 import IssuesList from '../components/IssuesList'
-import IssueListFilter from '../components/IssueListFilter'
 
 import { defPageSize, repoName, SOMETHING_WENT_WRONG } from '../constants'
-import { Edge } from '../store/types'
 import { checkTitle } from '../utils'
+
+const IssueListFilter = React.lazy(() => import('../components/IssueListFilter'))
 
 interface Props {}
 
@@ -21,11 +21,8 @@ const IssuesPage: React.FC<Props> = () => {
   const [issuesList, setIssuesList] = useState<Edge[]>([])
   const [issuesListFiltered, setIssuesListFiltered] = useState<Edge[]>([])
 
-  const variables = {
-    repo: repoName,
-    pageSize: defPageSize,
-    state: [issueState]
-  }
+  const variables = { repo: repoName, pageSize: defPageSize, state: [issueState] }
+
   const { data, loading, error } = useQuery<GetIssuesData, GetIssuesVariables>(
     GET_ISSUES_DETAILED,
     { variables }
@@ -34,7 +31,7 @@ const IssuesPage: React.FC<Props> = () => {
     data: statesCounts,
     loading: stateCountsLoading,
     error: stateCountsError
-  } = useQuery(ISSUES_COUNT_QUERY)
+  } = useQuery<GetStateCountsData>(ISSUES_COUNT_QUERY)
 
   useEffect(() => {
     if (data) {
@@ -56,8 +53,7 @@ const IssuesPage: React.FC<Props> = () => {
   const setSearchQuery = (input: string) => {
     if (!input) {
       setIssuesListFiltered(issuesList)
-    }
-    if (input) {
+    } else {
       const filtered = issuesList.filter(
         (item) => checkTitle(item.node.title, input) || checkTitle(item.node.body, input)
       )
