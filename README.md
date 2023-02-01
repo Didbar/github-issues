@@ -1,4 +1,4 @@
-# GitHub Issues Viewer
+# GitHub Facebook/React Issues Viewer
 
 A React-based application to view the issues and comments of a GitHub repository, using the GitHub GraphQL API and Apollo Client.
 
@@ -16,8 +16,6 @@ A React-based application to view the issues and comments of a GitHub repository
 - Implement a search function to search for a text term in the body or title of the issues or for the status of the issue (OPEN or CLOSED)
 - Routing strategy to view a single issue and its comments
 - Caching strategy to minimize network requests
-- Thorough testing
-- Documentation (comments and inline documentation)
 
 ## Deployment
 
