@@ -61,8 +61,8 @@ export const ISSUES_COUNT_QUERY = gql`
   }
 `
 export const COMMENTS_QUERY = gql`
-  query IssueCommentList($owner: String!, $name: String!, $number: Int!) {
-    repository(owner: $owner, name: $name) {
+  query IssueCommentList($number: Int!) {
+    repository(owner: "facebook", name: "react") {
       issue(number: $number) {
         id
         comments(first: 30) {

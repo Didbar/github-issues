@@ -6,16 +6,13 @@ import { Grid, Typography } from '@mui/material'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
 
 import Info from '../svgIcons/Info'
+import { getIconColor } from '../utils'
 
 type Props = {
   issues: Edge[]
 }
 
 const IssuesList: React.FC<Props> = ({ issues }) => {
-  const getIconColor = (state: string) => {
-    return state === 'OPEN' ? 'green' : 'red'
-  }
-
   return (
     <List>
       {issues.map(({ node }) => (

@@ -10,9 +10,26 @@ export interface Issue {
   }
 }
 
+export interface Comment {
+  id: string
+  body: string
+  createdAt: string
+  author: {
+    login: string
+    avatarUrl: string
+  }
+}
+
+export interface DetailedIssue extends Issue {
+  body: string
+}
+
 export interface Edge {
   cursor: string
   node: Issue
+}
+export interface CommentEdges {
+  node: Comment
 }
 
 export interface PageInfo {
@@ -26,9 +43,29 @@ export interface Repository {
     pageInfo: PageInfo
   }
 }
+export interface RepositoryItem {
+  issue: DetailedIssue
+}
+
+export interface RepositoryComments {
+  issue: {
+    comments: {
+      edges: CommentEdges[]
+    }
+    id: string
+  }
+}
 
 export interface GetIssuesData {
   repository: Repository
+}
+
+export interface GetIssueData {
+  repository: RepositoryItem
+}
+
+export interface GetCommentsData {
+  repository: RepositoryComments
 }
 
 export interface GetIssueVariables {
@@ -41,4 +78,7 @@ export interface GetIssuesVariables {
   cursor?: string
   pageSize: number
   state: string[]
+}
+export interface GetCommentVariables {
+  number: number
 }
