@@ -5,8 +5,9 @@ import { useQuery } from '@apollo/client'
 // import { GET_ISSUE } from '../graphql/issues.graphql'
 // import Issue from '../components/Issue'
 // import Comment from '../components/Comment'
+
 import { ISSUE_QUERY } from '../graphql/queries'
-import { GetIssueData, GetIssueVariables, DetailedIssue } from '../store/types'
+import { GetIssueData, GetIssueVariables, Issue } from '../store/types'
 
 import Loading from '../components/common/Loading'
 import ErrorMessage from '../components/common/Error'
@@ -19,7 +20,7 @@ type Params = {
 }
 
 export const IssuePage: React.FC = () => {
-  const [issue, setIssue] = useState<DetailedIssue>()
+  const [issue, setIssue] = useState<Issue>()
   let { issueNumber } = useParams<Params>()
 
   const navigate = useNavigate()

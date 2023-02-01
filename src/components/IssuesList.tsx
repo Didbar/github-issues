@@ -1,6 +1,6 @@
 import React from 'react'
 import Issue from './Issue'
-import { List, ListItem, ListItemIcon } from '@mui/material'
+import { List, ListItem } from '@mui/material'
 import { Edge } from '../store/types'
 import { Grid, Typography } from '@mui/material'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
@@ -17,12 +17,16 @@ const IssuesList: React.FC<Props> = ({ issues }) => {
     <List>
       {issues.map(({ node }) => (
         <ListItem key={node.id}>
-          <Grid container justifyContent='space-between' alignItems='center'>
-            <ListItemIcon>
+          <Grid
+            container
+            alignItems='center'
+            spacing={1}
+            columns={16}
+            style={{ backgroundColor: 'lightgray', borderRadius: '4px', padding: '2rem' }}>
+            <Grid item xs={15}>
               <Info style={{ color: getIconColor(node.state), marginRight: '2rem' }} />
-            </ListItemIcon>
-            <Issue title={node.title} number={node.number} createdAt={node.createdAt} />
-            <ListItemIcon>
+            </Grid>
+            <Grid item xs={1}>
               <ChatBubbleOutlineIcon
                 style={{
                   fontSize: 'small',
@@ -31,7 +35,15 @@ const IssuesList: React.FC<Props> = ({ issues }) => {
                 }}
               />
               <Typography variant='caption'>{node.comments.totalCount}</Typography>
-            </ListItemIcon>
+            </Grid>
+            <Grid item xs={16}>
+              <Issue
+                title={node.title}
+                number={node.number}
+                createdAt={node.createdAt}
+                body={node.body}
+              />
+            </Grid>
           </Grid>
         </ListItem>
       ))}

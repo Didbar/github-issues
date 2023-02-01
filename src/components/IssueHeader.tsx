@@ -3,11 +3,11 @@ import React from 'react'
 import { IconButton, Typography, Tooltip, Grid } from '@mui/material'
 import { OpenInNew } from '@mui/icons-material'
 import TimeAgo from './common/TimeAgo'
-import { DetailedIssue } from '../store/types'
+import { Issue } from '../store/types'
 import { getIconColor } from '../utils'
 
 interface Props {
-  issue: DetailedIssue
+  issue: Issue
 }
 
 const IssueHeader: React.FC<Props> = ({ issue }) => {

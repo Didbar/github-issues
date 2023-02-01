@@ -5,6 +5,7 @@ export interface Issue {
   createdAt: string
   title: string
   url: string
+  body: string
   comments: {
     totalCount: number
   }
@@ -18,10 +19,6 @@ export interface Comment {
     login: string
     avatarUrl: string
   }
-}
-
-export interface DetailedIssue extends Issue {
-  body: string
 }
 
 export interface Edge {
@@ -44,7 +41,7 @@ export interface Repository {
   }
 }
 export interface RepositoryItem {
-  issue: DetailedIssue
+  issue: Issue
 }
 
 export interface RepositoryComments {

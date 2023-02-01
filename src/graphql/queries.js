@@ -39,6 +39,7 @@ export const GET_ISSUES_DETAILED = gql`
             title
             state
             createdAt
+            body
             comments {
               totalCount
             }

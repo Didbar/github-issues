@@ -20,7 +20,6 @@ const IssueCommentList: React.FC<Props> = ({ issueNumber }) => {
   useEffect(() => {
     if (data) {
       setCommentList(data.repository.issue.comments.edges)
-      console.log(commentList)
     }
   }, [data, commentList])
 
