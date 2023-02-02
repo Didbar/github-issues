@@ -22,7 +22,12 @@ const IssuesList: React.FC<Props> = ({ issues }) => {
             alignItems='center'
             spacing={1}
             columns={16}
-            style={{ backgroundColor: 'lightgray', borderRadius: '4px', padding: '2rem' }}>
+            style={{
+              backgroundColor: 'lightgray',
+              borderRadius: '4px',
+              padding: '2rem',
+              overflow: 'auto'
+            }}>
             <Grid item xs={15}>
               <Info style={{ color: getIconColor(node.state), marginRight: '2rem' }} />
             </Grid>
