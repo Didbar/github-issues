@@ -7,6 +7,7 @@ import { ApolloClient, ApolloProvider } from '@apollo/client'
 import { apolloClient } from '../constants'
 
 jest.mock('react-markdown', () => ({ children }) => <div>{children}</div>)
+jest.mock('remark-gfm', () => {})
 const client = new ApolloClient(apolloClient)
 
 describe('Issues Component', () => {

@@ -11,8 +11,6 @@ describe('NotFound component', () => {
       </Router>
     )
 
-    await screen.findByRole('heading')
-
     expect(screen.getByRole('heading')).toHaveTextContent('404 Not found!')
   })
 })
