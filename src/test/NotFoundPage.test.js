@@ -1,15 +1,18 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import NotFound from '../pages/NotFoundPage'
 import { MemoryRouter as Router } from 'react-router-dom'
 
 describe('NotFound component', () => {
-  it('renders without crashing', () => {
-    const { container } = render(
+  test('renders without crashing', async () => {
+    render(
       <Router>
         <NotFound />
       </Router>
     )
-    expect(container).toBeTruthy()
+
+    await screen.findByRole('heading')
+
+    expect(screen.getByRole('heading')).toHaveTextContent('404 Not found!')
   })
 })

@@ -9,7 +9,7 @@ import { apolloClient } from '../constants'
 jest.mock('react-markdown', () => ({ children }) => <div>{children}</div>)
 const client = new ApolloClient(apolloClient)
 
-describe('NotFound component', () => {
+describe('Issues Component', () => {
   it('renders without crashing', () => {
     const { container } = render(
       <ApolloProvider client={client}>

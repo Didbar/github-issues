@@ -7,6 +7,6 @@ jest.mock('react-markdown', () => ({ children }) => <div>{children}</div>)
 describe('App component', () => {
   it('renders without crashing', () => {
     const { container } = render(<App />)
-    expect(container).toBeTruthy()
+    expect(container).toBeInTheDocument()
   })
 })
