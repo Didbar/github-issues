@@ -29,9 +29,6 @@ body {
 
   padding: 2rem 5rem;
   background-color: #dedede;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 code {
@@ -80,4 +77,8 @@ pre code {
 
 p code {
   background-color: rgb(181, 196, 225);
+}
+
+p img {
+  max-width: 100%;
 }
