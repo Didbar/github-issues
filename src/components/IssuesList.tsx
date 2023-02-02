@@ -28,10 +28,10 @@ const IssuesList: React.FC<Props> = ({ issues }) => {
               padding: '2rem',
               overflow: 'auto'
             }}>
-            <Grid item xs={15}>
+            <Grid item xs={8}>
               <Info style={{ color: getIconColor(node.state), marginRight: '2rem' }} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs={8} style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <ChatBubbleOutlineIcon
                 style={{
                   fontSize: 'small',
