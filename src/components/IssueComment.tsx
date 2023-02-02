@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 import { Grid, Typography, Avatar } from '@mui/material'
 import TimeAgo from './common/TimeAgo'
@@ -31,7 +32,7 @@ const IssueComment: React.FC<Props> = ({ body, author, createdAt }) => {
         </Typography>
       </Grid>
 
-      <ReactMarkdown children={body || '*No description provided*'} />
+      <ReactMarkdown children={body || '*No description provided*'} remarkPlugins={[remarkGfm]} />
 
       <Typography variant='body2' color='textSecondary' align='right'>
         <span>

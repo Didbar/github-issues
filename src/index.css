@@ -30,6 +30,11 @@ body {
   padding: 2rem 5rem;
   background-color: #dedede;
 }
+@media only screen and (max-width: 800px) {
+  body {
+    padding: 0.5rem 0.5rem;
+  }
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
@@ -78,7 +83,6 @@ pre code {
 p code {
   background-color: rgb(181, 196, 225);
 }
-
-p img {
+img {
   max-width: 100%;
 }

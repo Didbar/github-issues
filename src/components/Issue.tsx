@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { Link } from 'react-router-dom'
 
 import { Typography, Grid } from '@mui/material'
@@ -14,12 +15,18 @@ interface Props {
 
 const Issue: React.FC<Props> = ({ title, number, createdAt, body }) => {
   return (
-    <Grid container direction='column' gap={'1rem'}>
-      <Link to={`/facebook/react/issues/${number}`}>{title}</Link>
-      <ReactMarkdown children={body || '*No description provided*'} />
-      <Typography variant='caption' noWrap color='textSecondary'>
-        #{number} opened <TimeAgo date={createdAt} />
-      </Typography>
+    <Grid container alignItems='center' spacing={2} columns={16}>
+      <Grid item xs={16}>
+        <Link to={`/facebook/react/issues/${number}`}>{title}</Link>
+      </Grid>
+      <Grid item xs={16}>
+        <ReactMarkdown children={body || '*No description provided*'} remarkPlugins={[remarkGfm]} />
+      </Grid>
+      <Grid item xs={16}>
+        <Typography variant='caption' noWrap color='textSecondary'>
+          #{number} opened <TimeAgo date={createdAt} />
+        </Typography>
+      </Grid>
     </Grid>
   )
 }
