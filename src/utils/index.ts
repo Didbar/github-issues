@@ -3,5 +3,5 @@ export function checkTitle(title: string, input: string): boolean {
 }
 
 export const getStatusColor = (state: string): string => {
-  return state === 'OPEN' ? 'green' : 'red'
+  return state === 'OPEN' ? 'red' : 'green'
 }
