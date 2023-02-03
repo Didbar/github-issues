@@ -25,7 +25,7 @@ export const GET_ISSUES_DETAILED = gql`
         first: $pageSize
         after: $cursor
         states: $state
-        orderBy: { field: UPDATED_AT, direction: DESC }
+        orderBy: { field: CREATED_AT, direction: DESC }
       ) {
         pageInfo {
           endCursor

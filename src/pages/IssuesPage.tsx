@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 
 import { GET_ISSUES_DETAILED, ISSUES_COUNT_QUERY } from '../graphql/queries'
-import { GetIssuesData, GetIssuesVariables, Edge, GetStateCountsData } from '../store/types'
+import {
+  GetIssuesData,
+  GetIssuesVariables,
+  Edge,
+  GetStateCountsData,
+  PageInfo
+} from '../store/types'
 
 import SearchBar from '../components/common/SearchBar'
 import Loading from '../components/common/Loading/Loading'
@@ -11,6 +17,7 @@ import IssuesList from '../components/IssuesList'
 
 import { defPageSize, repoName, SOMETHING_WENT_WRONG } from '../constants'
 import { checkTitle } from '../utils'
+import Pagination from '../components/common/Pagination'
 
 const IssueListFilter = React.lazy(() => import('../components/IssueListFilter'))
 
@@ -19,11 +26,12 @@ interface Props {}
 const IssuesPage: React.FC<Props> = () => {
   const [issueState, setIssueState] = useState<string>('OPEN')
   const [issuesList, setIssuesList] = useState<Edge[]>([])
+  const [pageInfo, setPageInfo] = useState<PageInfo>()
   const [issuesListFiltered, setIssuesListFiltered] = useState<Edge[]>([])
 
   const variables = { repo: repoName, pageSize: defPageSize, state: [issueState] }
 
-  const { data, loading, error } = useQuery<GetIssuesData, GetIssuesVariables>(
+  const { data, loading, error, fetchMore } = useQuery<GetIssuesData, GetIssuesVariables>(
     GET_ISSUES_DETAILED,
     { variables }
   )
@@ -37,6 +45,7 @@ const IssuesPage: React.FC<Props> = () => {
     if (data) {
       setIssuesList(data.repository.issues.edges)
       setIssuesListFiltered(data.repository.issues.edges)
+      setPageInfo(data.repository.issues.pageInfo)
     }
   }, [data])
 
@@ -64,6 +73,28 @@ const IssuesPage: React.FC<Props> = () => {
   const handleChangeState = (e: React.SyntheticEvent, value: string) => {
     setIssueState(value)
   }
+  const handleLoadMore = () => {
+    fetchMore({
+      query: GET_ISSUES_DETAILED,
+      variables: {
+        ...variables,
+        cursor: pageInfo?.endCursor
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prev
+        return {
+          repository: {
+            ...prev.repository,
+            issues: {
+              ...prev.repository.issues,
+              pageInfo: fetchMoreResult.repository.issues.pageInfo,
+              edges: [...prev.repository.issues.edges, ...fetchMoreResult.repository.issues.edges]
+            }
+          }
+        }
+      }
+    })
+  }
 
   return (
     <>
@@ -76,6 +107,7 @@ const IssuesPage: React.FC<Props> = () => {
         />
       )}
       {issuesListFiltered && <IssuesList issues={issuesListFiltered} />}
+      {pageInfo && <Pagination onLoadMore={handleLoadMore} hasNextPage={pageInfo.hasNextPage} />}
     </>
   )
 }

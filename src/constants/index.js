@@ -5,7 +5,7 @@ export const IssueStates = {
   CLOSED: 'CLOSED'
 }
 
-export const defPageSize = 20
+export const defPageSize = 2
 export const repoName = 'react'
 export const SOMETHING_WENT_WRONG = 'Something went wrong!'
 
