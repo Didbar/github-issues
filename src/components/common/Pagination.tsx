@@ -4,10 +4,10 @@ import { Toolbar, Button } from '@mui/material'
 
 interface Props {
   onLoadMore: () => void
-  hasNextPage: boolean
+  hasNextPage?: boolean
 }
 
-const Pagination: React.FC<Props> = ({ onLoadMore, hasNextPage }) => (
+const Pagination: React.FC<Props> = ({ onLoadMore, hasNextPage = false }) => (
   <Toolbar>
     <Button disabled={!hasNextPage} onClick={onLoadMore} color='primary'>
       Load more

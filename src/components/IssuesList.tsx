@@ -6,7 +6,7 @@ import { Grid, Typography } from '@mui/material'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
 
 import Info from '../svgIcons/Info'
-import { getIconColor } from '../utils'
+import { getStatusColor } from '../utils'
 
 type Props = {
   issues: Edge[]
@@ -29,13 +29,13 @@ const IssuesList: React.FC<Props> = ({ issues }) => {
               overflow: 'auto'
             }}>
             <Grid item xs={8}>
-              <Info style={{ color: getIconColor(node.state), marginRight: '2rem' }} />
+              <Info style={{ color: getStatusColor(node.state), marginRight: '2rem' }} />
             </Grid>
             <Grid item xs={8} style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <ChatBubbleOutlineIcon
                 style={{
                   fontSize: 'small',
-                  color: getIconColor(node.state),
+                  color: getStatusColor(node.state),
                   margin: '0 .3rem 0 2rem'
                 }}
               />

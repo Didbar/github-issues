@@ -4,7 +4,7 @@ import { IconButton, Typography, Tooltip, Grid } from '@mui/material'
 import { OpenInNew } from '@mui/icons-material'
 import TimeAgo from './common/TimeAgo'
 import { Issue } from '../store/types'
-import { getIconColor } from '../utils'
+import { getStatusColor } from '../utils'
 
 interface Props {
   issue: Issue
@@ -14,7 +14,7 @@ const IssueHeader: React.FC<Props> = ({ issue }) => {
   const timeAgo = issue.createdAt && <TimeAgo date={issue.createdAt} />
   const issueNumber = issue.number && <span>#{issue.number}</span>
   const issueState = issue.state && (
-    <span style={{ color: getIconColor(issue.state) }}>{issue.state}</span>
+    <span style={{ color: getStatusColor(issue.state) }}>{issue.state}</span>
   )
   return (
     <div>

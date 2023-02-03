@@ -99,15 +99,13 @@ const IssuesPage: React.FC<Props> = () => {
   return (
     <>
       <SearchBar onSearch={setSearchQuery} />
-      {statesCounts && (
-        <IssueListFilter
-          state={issueState}
-          onChange={handleChangeState}
-          statesCounts={statesCounts}
-        />
-      )}
-      {issuesListFiltered && <IssuesList issues={issuesListFiltered} />}
-      {pageInfo && <Pagination onLoadMore={handleLoadMore} hasNextPage={pageInfo.hasNextPage} />}
+      <IssueListFilter
+        state={issueState}
+        onChange={handleChangeState}
+        statesCounts={statesCounts}
+      />
+      <IssuesList issues={issuesListFiltered} />
+      <Pagination onLoadMore={handleLoadMore} hasNextPage={pageInfo?.hasNextPage} />
     </>
   )
 }

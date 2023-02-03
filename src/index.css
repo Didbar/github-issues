@@ -87,3 +87,19 @@ p code {
 img {
   max-width: 100%;
 }
+
+.error-container {
+  min-height: 80vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+}
+.error-container h5 {
+  font-size: 1.5rem;
+}
+.error-container small {
+  font-size: 0.9rem;
+  font-weight: 400;
+}

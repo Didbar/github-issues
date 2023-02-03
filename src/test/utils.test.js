@@ -1,4 +1,4 @@
-import { checkTitle, getIconColor } from '../utils'
+import { checkTitle, getStatusColor } from '../utils'
 
 describe('checkTitle', () => {
   it('returns true if title includes the input', () => {
@@ -28,10 +28,10 @@ describe('checkTitle', () => {
 
 describe('getIconColor', () => {
   it('returns green for OPEN state', () => {
-    expect(getIconColor('OPEN')).toBe('green')
+    expect(getStatusColor('OPEN')).toBe('green')
   })
 
   it('returns red for CLOSED state', () => {
-    expect(getIconColor('CLOSED')).toBe('red')
+    expect(getStatusColor('CLOSED')).toBe('red')
   })
 })
