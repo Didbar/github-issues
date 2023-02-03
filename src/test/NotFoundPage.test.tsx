@@ -10,7 +10,6 @@ describe('NotFound component', () => {
         <NotFound />
       </Router>
     )
-
     expect(screen.getByRole('heading')).toHaveTextContent('404 Not found!')
   })
 })

@@ -2,20 +2,23 @@ import React from 'react'
 import { MemoryRouter as Router } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
-import IssuePage from '../pages/IssuePage'
+import IssuesPage from '../pages/IssuesPage'
 import { ApolloClient, ApolloProvider } from '@apollo/client'
 import { apolloClient } from '../constants'
 
-jest.mock('react-markdown', () => ({ children }) => <div>{children}</div>)
+jest.mock(
+  'react-markdown',
+  () => (({ children }) => <div>{children}</div>) as React.FC<{ children: React.ReactNode }>
+)
 jest.mock('remark-gfm', () => {})
 const client = new ApolloClient(apolloClient)
 
-describe('Issue Component', () => {
+describe('Issues Component', () => {
   it('renders without crashing', () => {
     const { container } = render(
       <ApolloProvider client={client}>
         <Router>
-          <IssuePage />
+          <IssuesPage />
         </Router>
       </ApolloProvider>
     )

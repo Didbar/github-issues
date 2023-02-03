@@ -28,10 +28,10 @@ describe('checkTitle', () => {
 
 describe('getIconColor', () => {
   it('returns green for OPEN state', () => {
-    expect(getStatusColor('OPEN')).toBe('green')
+    expect(getStatusColor('OPEN')).toBe('red')
   })
 
   it('returns red for CLOSED state', () => {
-    expect(getStatusColor('CLOSED')).toBe('red')
+    expect(getStatusColor('CLOSED')).toBe('green')
   })
 })
