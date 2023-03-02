@@ -1,4 +1,4 @@
-# GitHub Facebook/React Issues Viewer
+# GitHub Facebook - React Issues Viewer
 
 A React-based application to view the issues and comments of a GitHub repository, using the GitHub GraphQL API and Apollo Client.
 
